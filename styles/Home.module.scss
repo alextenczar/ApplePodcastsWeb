@@ -108,6 +108,26 @@
   margin-left: 0.5rem;
 }
 
+.thumb {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+}
+
+.showItem {
+    width: 20%;
+    padding: 10px;
+}
+
+.showContainer {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
 @media (max-width: 600px) {
   .grid {
     width: 100%;
