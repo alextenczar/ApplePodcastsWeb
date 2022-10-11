@@ -5,7 +5,7 @@ import searchStyles from '../styles/Search.module.scss'
 import Link from 'next/link'
 import Layout from '../components/layout'
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
     // Fetch data from external API
     const router = context
     const res = await fetch(`https://itunes.apple.com/search?term=${router.query.term}&entity=podcast`)

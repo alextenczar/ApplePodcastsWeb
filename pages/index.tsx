@@ -11,7 +11,7 @@ export function middleware(request: NextRequest) {
   return { props: { location } }
 }
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
   // Fetch data from external API
   const router = context
   const res = await fetch(`https://rss.applemarketingtools.com/api/v2/us/podcasts/top/50/podcasts.json`)

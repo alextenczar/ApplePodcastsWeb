@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import { useRouter } from 'next/router'
 
-export async function getServerSideProps(context) {
+export async function getServerSideProps(context: any) {
     // Fetch data from external API
     const router = context
     const res = await fetch(`https://itunes.apple.com/search?term=${router.query}&entity=podcast`)

@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
 
-export default function Layout({ children }) {
+export default function Layout({ children }: { children: JSX.Element} ) {
     return (
         <div className={styles.container}>
               <Head>
@@ -11,7 +11,7 @@ export default function Layout({ children }) {
                 </Head>
             
         <main className={styles.main}>
-            {children}
+            { children }
         </main>
 
         <footer className={styles.footer}>

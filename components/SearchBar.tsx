@@ -1,22 +1,26 @@
-import { Suspense, useState } from 'react';
+import React, { createRef, Suspense, useState } from 'react';
 import { useRouter } from 'next/router'
+import search from '../pages/search';
 
-export default function SearchBar(props) {
+
+export default function SearchBar(props: any) {
+
     const router = useRouter()
     let searchText = ""
-    const [searchValue, setSearchValue] = useState('');
+    
+    let searchValue = createRef<HTMLInputElement>();
 
-    function handleSubmit(e) {
-        const { history } = props;
+    function handleSubmit(e: React.ChangeEvent<HTMLInputElement>) {
+
         e.preventDefault();
-        const searchTerm = "/search?" + "term=" + searchValue.replace(/\s/g, '-');
+        const searchTerm = "/search?" + "term=" + searchValue?.current?.value.replace(/\s/g, '-');
         router.push(searchTerm);
     } 
 
 
     return (
         <form id="search-bar" onSubmit={handleSubmit} autoComplete="off">
-            <input id="search-box" type="text" onChange={(e) => setSearchValue(e.target.value)} placeholder=""></input>
+            <input id="search-box" type="text" ref={searchValue} placeholder=""></input>
         </form>
     );
 }

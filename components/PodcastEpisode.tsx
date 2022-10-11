@@ -10,10 +10,10 @@ export async function getServerSideProps() {
 // This gets called on every request
 
 
-export default function PodcastShow({ data }) {
+export default function PodcastShow( data: any ) {
     return (
         <div>
-            {{ data }}
+            
         </div>
     );
 }
