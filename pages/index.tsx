@@ -6,8 +6,9 @@ import SearchBar from '../components/SearchBar'
 
 import { NextRequest, NextResponse, userAgent } from 'next/server'
 
+
 export function middleware(request: NextRequest) {
-  let location = request.geo.country
+  let location = request?.geo?.country
   return { props: { location } }
 }
 
@@ -17,15 +18,24 @@ export async function getServerSideProps(context: any) {
   const res = await fetch(`https://rss.applemarketingtools.com/api/v2/us/podcasts/top/50/podcasts.json`)
   const data = await res.json()
   // Pass data to the page via props
-  let returnData = data.feed.results
+  let returnData: Array<object>
+  returnData = data.feed.results
   //console.log(returnData)
-  return { props: { returnData } }
+  return { props: { returnData }  }
+}
+
+interface Props {
+  returnData: Array<object>;
+  location: String;
 }
 
 
-const Home: NextPage = (props) => {
+const Home: NextPage<Props> = (props) => {
 
-  console.log(props.location)
+  
+  let { returnData, location } = props;
+
+  console.log(location)
 
   return (
     <Layout>
@@ -36,7 +46,7 @@ const Home: NextPage = (props) => {
       <SearchBar></SearchBar>
       <h2>Top Shows</h2>
       <div className={styles.showContainer}>
-      {props.returnData.map((value, index) => {
+      {returnData.map((value: any, index: any) => {
         let imgUrl = value.artworkUrl100.replace('100x100', '600x600') 
         return (
           <div className={styles.showItem} key={value.id}>

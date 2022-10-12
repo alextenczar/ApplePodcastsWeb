@@ -13,11 +13,14 @@ export async function getServerSideProps(context: any) {
     return { props: { returnData } }
 }
 
+interface Props {
+    returnData: Array<object>;
+}
 
-const Home: NextPage = (props) => {
+const podcast: NextPage<Props> = (returnData: any) => {
     return (
         <Layout>
-            {props.returnData.map((value, index) => {
+            {returnData.map((value: any, index: any) => {
                 return (
                     <div key={value.collectionId}>
                         {value.collectionName}

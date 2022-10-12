@@ -119,6 +119,18 @@
     padding: 10px;
 }
 
+@media (max-width: 1024px) {
+  .showItem {
+      width: 33.33%;
+  }
+}
+
+@media (max-width: 600px) {
+  .showItem {
+      width: 50%;
+  }
+}
+
 .showContainer {
   display: flex;
   flex-direction: row;

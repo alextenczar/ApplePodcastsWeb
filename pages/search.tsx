@@ -16,11 +16,19 @@ export async function getServerSideProps(context: any) {
     return { props: { returnData } }
 }
 
+interface Props {
+  returnData: Array<object>;
+}
 
-const search: NextPage = (props) => {
+
+const search: NextPage<Props> = (props) => {
+
+    let { returnData} = props;
+    
+
     return (
         <Layout>
-                {props.returnData.map((value, index) => {
+                {returnData.map((value: any, index: any) => {
                     return (
                         <div key={value.collectionId}>
                             <a href={value.collectionViewUrl}><img className={searchStyles.thumb} src={value.artworkUrl600} />

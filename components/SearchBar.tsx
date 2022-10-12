@@ -10,7 +10,7 @@ export default function SearchBar(props: any) {
     
     let searchValue = createRef<HTMLInputElement>();
 
-    function handleSubmit(e: React.ChangeEvent<HTMLInputElement>) {
+    function handleSubmit(e: any) {
 
         e.preventDefault();
         const searchTerm = "/search?" + "term=" + searchValue?.current?.value.replace(/\s/g, '-');
