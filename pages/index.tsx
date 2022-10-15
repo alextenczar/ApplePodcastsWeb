@@ -8,9 +8,10 @@ import { NextRequest, NextResponse, userAgent } from 'next/server'
 
 
 export function middleware(request: NextRequest) {
-  let location = request?.geo?.country
+  let location = request
   return { props: { location } }
 }
+
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
