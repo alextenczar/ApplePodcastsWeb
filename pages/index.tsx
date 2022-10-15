@@ -13,7 +13,6 @@ export async function getServerSideProps(context: any) {
   // Pass data to the page via props
   let returnData: Array<object>
   returnData = data.feed.results
-  console.log(res)
   return { props: { returnData }  }
 }
 
