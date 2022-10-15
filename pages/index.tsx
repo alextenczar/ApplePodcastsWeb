@@ -4,17 +4,6 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import SearchBar from '../components/SearchBar'
 
-import { NextRequest, NextResponse, userAgent } from 'next/server'
-
-
-export function middleware(request: NextRequest) {
-  const url = request.nextUrl
-  const { device } = userAgent(request)
-  const viewport = device.type === 'mobile' ? 'mobile' : 'desktop'
-  url.searchParams.set('viewport', viewport)
-  return NextResponse.rewrite(url)
-}
-
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
@@ -24,7 +13,7 @@ export async function getServerSideProps(context: any) {
   // Pass data to the page via props
   let returnData: Array<object>
   returnData = data.feed.results
-  //console.log(returnData)
+  console.log(data)
   return { props: { returnData }  }
 }
 
@@ -37,9 +26,8 @@ interface Props {
 const Home: NextPage<Props> = (props) => {
 
   
-  let { returnData, location } = props;
+  let { returnData } = props;
 
-  console.log(location)
 
   return (
     <Layout>
