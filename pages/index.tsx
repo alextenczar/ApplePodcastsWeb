@@ -4,6 +4,16 @@ import Link from 'next/link'
 import Layout from '../components/layout'
 import SearchBar from '../components/SearchBar'
 
+import { NextResponse, userAgent } from 'next/server'
+import type { NextRequest } from 'next/server'
+
+
+export function middleware(request: NextRequest) {
+  const url = request.nextUrl
+  const { device } = userAgent(request)
+  console.log(request.geo)
+}
+
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
