@@ -3,17 +3,7 @@ import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import SearchBar from '../components/SearchBar'
-
-import { NextResponse, userAgent } from 'next/server'
-import type { NextRequest } from 'next/server'
-
-
-export function middleware(request: NextRequest) {
-  const url = request.nextUrl
-  const { device } = userAgent(request)
-  console.log(request.geo)
-}
-
+import { getCookie } from '../functions/getCookie'
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
@@ -23,32 +13,32 @@ export async function getServerSideProps(context: any) {
   // Pass data to the page via props
   let returnData: Array<object>
   returnData = data.feed.results
-  return { props: { returnData }  }
+  const location = context.res.getHeader('X-Country');
+  context.res.removeHeader('X-Country');
+  return { props: { location, returnData }  }
 }
 
 interface Props {
   returnData: Array<object>;
   location: String;
+  userAgent?: String;
 }
-
 
 const Home: NextPage<Props> = (props) => {
 
-  
-  let { returnData } = props;
 
-
-  return (
-    <Layout>
-      <Link href={{pathname: `/search`, query: { term: 'test' } }}>
-          <a>Click Here</a>
-      </Link>
-      
-      <SearchBar></SearchBar>
-      <h2>Top Shows</h2>
-      <div className={styles.showContainer}>
+  let { returnData, location } = props
+  console.log(location)
+  return (  
+  <Layout>
+    <Link href={{ pathname: `/search`, query: { term: 'test' } }}>
+      <a>Click Here</a>
+    </Link>
+    <SearchBar></SearchBar>
+    <h2>Top Shows</h2>
+    <div className={styles.showContainer}>
       {returnData.map((value: any, index: any) => {
-        let imgUrl = value.artworkUrl100.replace('100x100', '600x600') 
+        let imgUrl = value.artworkUrl100.replace('100x100', '600x600')
         return (
           <div className={styles.showItem} key={value.id}>
             <a href={value.collectionViewUrl}><img className={styles.thumb} src={imgUrl} />
@@ -59,7 +49,7 @@ const Home: NextPage<Props> = (props) => {
         );
       })
       }
-      </div>
+    </div>
 
     </Layout>
   )
