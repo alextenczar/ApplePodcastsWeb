@@ -7,10 +7,10 @@ interface Info {
 
 export function middleware(request: NextRequest) {
   const response = NextResponse.next()
-  console.log(request.geo)
+  console.log(request.geo.country)
   let country = 'test'
   if (request?.geo?.country !== undefined && request?.geo?.country !== null) {
-      country = request?.geo?.country
+      country = request.geo.country
   }
   response.headers.set('X-Country', country);
   return response
