@@ -3,7 +3,6 @@ import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import SearchBar from '../components/SearchBar'
-import { getCookie } from '../functions/getCookie'
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
