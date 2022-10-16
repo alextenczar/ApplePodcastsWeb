@@ -11,6 +11,6 @@ export function middleware(request: NextRequest) {
   if (request?.geo?.country !== undefined && request?.geo?.country !== null) {
       country = request.geo.country
   }
-  response.headers.set('X-Country', country);
+  response.headers.set('X-Country', 'testt');
   return response
 }

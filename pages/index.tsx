@@ -6,14 +6,14 @@ import SearchBar from '../components/SearchBar'
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
+  const location = context.res.getHeader('X-Country');
+  context.res.removeHeader('X-Country');
   const router = context
   const res = await fetch(`https://rss.applemarketingtools.com/api/v2/us/podcasts/top/50/podcasts.json`)
   const data = await res.json()
   // Pass data to the page via props
   let returnData: Array<object>
   returnData = data.feed.results
-  const location = context.res.getHeader('X-Country');
-  context.res.removeHeader('X-Country');
   return { props: { location, returnData }  }
 }
 
