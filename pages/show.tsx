@@ -12,12 +12,10 @@ export async function getServerSideProps(context: any) {
     const router = context
     async function showFeedData(show:any) {
         const showFeedRes = await fetch(show.feedUrl)
-        //console.log(show[0].feedUrl)
         const showDataa = await showFeedRes.text()
 
         var parser = new xml2js.Parser(/* options */);
         let xml = await parser.parseStringPromise(showDataa).then(function (result) {
-            console.log('Done');
             return result
         })
         .catch(function (err) {

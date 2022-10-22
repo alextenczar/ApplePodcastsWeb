@@ -177,7 +177,8 @@ export default function CountrySelect(props: any) {
                 <option value="vn">Vietnam</option>
                 <option value="ye">Yemen</option>
                 <option value="zm">Zambia</option>
-                <option value="zw">Zimbabwe</option></select>
+                <option value="zw">Zimbabwe</option>
+            </select>
         </label>
     );
 }

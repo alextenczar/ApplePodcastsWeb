@@ -1,5 +1,6 @@
 import Head from 'next/head'
 import styles from '../styles/Home.module.scss'
+import Nav from '../components/Nav'
 
 
 
@@ -11,7 +12,9 @@ export default function Layout({ children }: { children: JSX.Element|JSX.Element
                     <meta name="description" content="Search For Apple Podcasts" />
                     <link rel="icon" href="/favicon.ico" />
                 </Head>
-            
+
+        <Nav></Nav>           
+        
         <main className={styles.main}>
             { children }
         </main>

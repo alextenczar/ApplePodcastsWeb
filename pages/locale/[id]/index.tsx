@@ -2,7 +2,6 @@ import type { NextPage } from 'next'
 import styles from '../../../styles/Home.module.scss'
 import Link from 'next/link'
 import Layout from '../../../components/layout'
-import SearchBar from '../../../components/SearchBar'
 import CountrySelect from '../../../components/countrySelect'
 
 export async function getServerSideProps(context: any) {
@@ -32,20 +31,17 @@ interface Props {
 
 const LocaleHome: NextPage<Props> = (props) => {
 
-  
   let { returnData, countryCode } = props
-  console.log(countryCode)
   return (  
   <Layout>
     <Link href={{ pathname: `/search`, query: { term: 'test' } }}>
       <a>Click Here</a>
     </Link>
-    <SearchBar></SearchBar>
       <h2>Top Shows</h2>
     <CountrySelect country={{countryCode}}></CountrySelect>
     <div className={styles.showContainer}>
       {returnData.map((value: any, index: any) => {
-        let imgUrl = value.artworkUrl100.replace('100x100', '600x600')
+        let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
         let showId = value.id
         return (
           <div className={styles.showItem} key={value.id}>
