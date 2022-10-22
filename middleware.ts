@@ -1,16 +1,12 @@
 import { NextResponse } from 'next/server'
 import type { NextRequest } from 'next/server'
 
-interface Info {
-    country: String; 
-}
-
-export function middleware(request: NextRequest) {
-  const response = NextResponse.next()
-  let country = 'test'
-  if (request?.geo?.country !== undefined && request?.geo?.country !== null) {
-      country = request.geo.country
-  }
-  response.headers.set('X-Country', 'testt');
-  return response
+export async function middleware(request: NextRequest) {
+    const response = NextResponse.next()
+    let locale = 'us'
+    if (request?.geo?.country !== undefined) {
+        locale = request.geo.country
+    }
+    response.cookies.set('locale', locale)
+    return response
 }

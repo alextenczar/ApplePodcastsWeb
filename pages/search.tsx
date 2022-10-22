@@ -12,7 +12,7 @@ export async function getServerSideProps(context: any) {
     const data = await res.json()
     // Pass data to the page via props
     let returnData = data.results
-    console.log(router.query.term)
+    //console.log(router.query.term)
     return { props: { returnData } }
 }
 
@@ -31,14 +31,17 @@ const search: NextPage<Props> = (props) => {
                 {returnData.map((value: any, index: any) => {
                     return (
                         <div key={value.collectionId}>
-                            <a href={value.collectionViewUrl}><img className={searchStyles.thumb} src={value.artworkUrl600} />
-                            <p>{value.collectionName}</p>
-                            <p>{value.artistName}</p>
-                            <p>Episodes: {value.trackCount}</p>
-                            </a>
+                            <Link href={{pathname: `/show`, query: {id: value.trackId} }}>
+                                <span>
+                                    <img className={searchStyles.thumb} src={value.artworkUrl600} />
+                                    <p>{value.collectionName}</p>
+                                    <p>{value.artistName}</p>
+                                    <p>Episodes: {value.trackCount}</p>
+                                </span>
+                            </Link>
                         </div>
                        
-                    );   
+                    )   
                         
                     })
                 }

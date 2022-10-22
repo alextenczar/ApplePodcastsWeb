@@ -1,0 +1,39 @@
+.showPageContainer {
+    display: flex;
+    flex-direction: column;
+    max-width: 87%;
+    margin: auto;
+}
+
+.showInfo {
+
+    img {
+        width: 100%;
+        border-radius: 6px;
+    }
+}
+
+.showEpisodesContainer {
+
+}
+
+@media only screen and (min-width: 735px) {
+    .showPageContainer {
+        flex-direction: row;
+        max-width: 692px;
+    }
+    .showInfo {
+        width: 36%;
+    }
+
+    .showEpisodesContainer {
+        width: 64%;
+    }
+}
+
+@media only screen and (min-width: 1069px) {
+    .showPageContainer {
+        max-width: 980px;
+    }
+
+}
