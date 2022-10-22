@@ -27,13 +27,18 @@ const search: NextPage<Props> = (props) => {
 
     return (
         <Layout>
+                <div className={styles.showContainer}>
                 {returnData.map((value: any, index: any) => {
+                    let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
+                    let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
+                    let priority = true
+                    
                     return (
-                        <div key={value.collectionId}>
+                        <div className={styles.showItem} key={value.collectionId}>
                             <Link href={{pathname: `/show`, query: {id: value.trackId} }}>
                                 <a>
                                 <span>
-                                    <img className={searchStyles.thumb} src={value.artworkUrl600} />
+                                    <div className={searchStyles.thumb}><Image src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/></div>
                                     <p>{value.collectionName}</p>
                                     <p>{value.artistName}</p>
                                     <p>Episodes: {value.trackCount}</p>
@@ -46,6 +51,7 @@ const search: NextPage<Props> = (props) => {
                         
                     })
                 }
+                </div>
 
         </Layout>
     )

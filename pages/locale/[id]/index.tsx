@@ -38,8 +38,9 @@ const LocaleHome: NextPage<Props> = (props) => {
     <Link href={{ pathname: `/search`, query: { term: 'test' } }}>
       <a>Click Here</a>
     </Link>
-      <h2>Top Shows</h2>
-    <CountrySelect country={{countryCode}}></CountrySelect>
+    <div className={styles.headerSelect}>
+      <h2>Top Shows In:</h2>    <CountrySelect country={{countryCode}}></CountrySelect>
+    </div>
     <div className={styles.showContainer}>
       {returnData.map((value: any, index: any) => {
         let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
@@ -50,7 +51,9 @@ const LocaleHome: NextPage<Props> = (props) => {
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
               <a>
-                <Image className={styles.thumb} src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
+                <div className={styles.thumb}>
+                    <Image src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
+                </div>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
               </a>

@@ -9,7 +9,6 @@ export default function CountrySelect(props: any) {
     }
     return (
         <label>
-            Country
             <select id="storefronts" onChange={handleChange} value={props.country.countryCode}>
                 <option value="dz">Algeria</option>
                 <option value="ao">Angola</option>

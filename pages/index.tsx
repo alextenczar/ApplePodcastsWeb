@@ -3,6 +3,7 @@ import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
 import Layout from '../components/layout'
 import CountrySelect from '../components/countrySelect'
+import Image from 'next/image'
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
@@ -29,17 +30,19 @@ const Home: NextPage<Props> = (props) => {
     <Link href={{ pathname: `/search`, query: { term: 'test' } }}>
       <a>Click Here</a>
     </Link>
-      <h2>Top Shows</h2>
+      <h2>Top Shows In:</h2>
     <CountrySelect country={{countryCode}}></CountrySelect>
     <div className={styles.showContainer}>
       {returnData.map((value: any, index: any) => {
         let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
+        let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
         let showId = value.id
+        let priority = true
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
               <a>
-                <img className={styles.thumb} src={imgUrl} />
+                <Image className={styles.thumb} src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
               </a>

@@ -1,5 +1,40 @@
 .thumb {
-    width: 200px;
-    height: 200px;
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  img {
     border-radius: 6px;
+  }
+  box-shadow: 2px 4px 12px rgba(0,0,0,.08);
+  transition: all .3s cubic-bezier(0,0,.5,1);
+}
+
+.thumb:hover {
+  box-shadow: 2px 4px 16px rgba(0,0,0,.16);
+  transform: scale(1.025,1.025);
+}
+.showContainer {
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  max-width: 1280px;
+  flex-wrap: wrap;
+  margin: auto;
+}
+
+.showItem {
+    width: 20%;
+    padding: 10px;
+}
+
+@media (max-width: 1024px) {
+  .showItem {
+      width: 33.33%;
+  }
+}
+
+@media (max-width: 600px) {
+  .showItem {
+      width: 50%;
+  }
 }

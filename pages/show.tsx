@@ -47,12 +47,14 @@ const show: NextPage<Props> = (props) => {
 
     let { returnShowData, returnEpisodesData, feedResult} = props;
     let episodes: any = returnEpisodesData
+    let blurImgUrl = returnShowData.artworkUrl100.replace('100x100', '10x10')
+    let priority = true
 
     return (
         <Layout>
             <div className={styles.showPageContainer}>
                 <div className={styles.showInfo}>
-                    <img src={returnShowData.artworkUrl600} />
+                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} priority={priority} loading="eager" width={600} height={600} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
                     <h1>
                         <span>{returnShowData.collectionName}</span>
                         <span>{returnShowData.artistName}</span>
@@ -78,6 +80,10 @@ const show: NextPage<Props> = (props) => {
                                 <p>{value.trackName}</p>
                                 <p>{value.shortDescription}</p>
                                 <a href={value.episodeUrl}>Episode Link</a>
+                                <audio controls>
+                                    <source src={value.episodeUrl} type="audio/mpeg"></source>
+                                    Your browser does not support the audio element.
+                                </audio>
                                 <p>{podcastLengthString}</p>
                             </div> 
                     )
