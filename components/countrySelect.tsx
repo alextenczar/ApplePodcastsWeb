@@ -4,7 +4,7 @@ import { useRouter } from 'next/router'
 export default function CountrySelect(props: any) {
     const router = useRouter()
     function handleChange(e: any) {
-        const countryValue = "/?locale=" + e.target.value; 
+        const countryValue = "/locale/" + e.target.value; 
         router.push(countryValue);
     }
     return (

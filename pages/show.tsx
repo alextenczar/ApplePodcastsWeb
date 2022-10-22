@@ -49,8 +49,6 @@ const show: NextPage<Props> = (props) => {
 
     let { returnShowData, returnEpisodesData, feedResult} = props;
     let episodes: any = returnEpisodesData
-    
-    console.log(returnShowData)
 
     return (
         <Layout>
