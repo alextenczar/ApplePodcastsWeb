@@ -7,6 +7,8 @@ export async function middleware(request: NextRequest) {
     if (request?.geo?.country !== undefined) {
         locale = request.geo.country
     }
+    console.log(locale)
+    console.log(request)
     response.cookies.set('locale', locale)
     return response
 }
