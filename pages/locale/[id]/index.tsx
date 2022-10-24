@@ -35,9 +35,6 @@ const LocaleHome: NextPage<Props> = (props) => {
   let { returnData, countryCode } = props
   return (  
   <Layout>
-    <Link href={{ pathname: `/search`, query: { term: 'test' } }}>
-      <a>Click Here</a>
-    </Link>
     <div className={styles.headerSelect}>
       <h2>Top Shows In:</h2>    <CountrySelect country={{countryCode}}></CountrySelect>
     </div>

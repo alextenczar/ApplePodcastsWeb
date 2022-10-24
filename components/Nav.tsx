@@ -3,6 +3,8 @@ import { useRouter } from 'next/router'
 import search from '../pages/search';
 import styles from '../styles/Nav.module.scss'
 import Link from 'next/link'
+import { AiOutlineSearch } from "react-icons/ai"
+import SearchBar from '../components/SearchBar'
 
 
 export default function Nav(props: any) {
@@ -23,10 +25,12 @@ export default function Nav(props: any) {
     return (
         <nav className={styles['nav-container']}>
             <div className={styles['nav-inner']}>
-                <Link href='/'>Apple Podcasts Web</Link>
-                <form id="search-bar" onSubmit={handleSubmit} autoComplete="off">
-                    <input id="search-box" type="text" ref={searchValue} placeholder=""></input>
-                </form>
+                <div className='nav-title-container'>
+                    <span className={styles['nav-title']}><Link className={styles['nav-title']} href='/'>Apple Podcasts</Link><span className={styles['nav-sub-title']}> Web</span></span>
+                </div>
+                <div className={styles['nav-search-container']}>
+                    <SearchBar/>
+                </div>
             </div>
         </nav>
     );
