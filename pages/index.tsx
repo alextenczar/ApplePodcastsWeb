@@ -38,11 +38,9 @@ const Home: NextPage<Props> = (props) => {
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
-              <a>
                 <Image className={styles.thumb} src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
-              </a>
             </Link>
           </div>
         );
