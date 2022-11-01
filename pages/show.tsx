@@ -54,13 +54,15 @@ const show: NextPage<Props> = (props) => {
         <Layout>
             <div className={styles.showPageContainer}>
                 <div className={styles.showInfo}>
-                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} priority={priority} loading="eager" width={600} height={600} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
-                    <h1>
-                        <span>{returnShowData.collectionName}</span>
-                        <span>{returnShowData.artistName}</span>
-                    </h1>
-                    <p>{returnShowData.trackCount} Episodes</p>
-                    <p>{feedResult.replace(/<\/?[^>]+>/gi, '')}</p>
+                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} priority width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
+                    <div className={styles.showInfoInner}>
+                        <h1>
+                            <span>{returnShowData.collectionName}</span>
+                            <span>{returnShowData.artistName}</span>
+                        </h1>
+                        <p>{returnShowData.trackCount} Episodes</p>
+                        <p>{feedResult.replace(/<\/?[^>]+>/gi, '')}</p>
+                    </div>
                 </div>
                 <div className={styles.showEpisodesContainer}>
                     {episodes.map((value: any, index: any) => {

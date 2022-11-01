@@ -37,14 +37,13 @@ const search: NextPage<Props> = (props) => {
                         <div className={styles.showItem} key={value.collectionId}>
                             <Link href={{pathname: `/show`, query: {id: value.trackId} }}>
                                 <span>
-                                    <div className={searchStyles.thumb}><Image src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/></div>
+                                    <div className={searchStyles.thumb}><Image src={imgUrl} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/></div>
                                     <p>{value.collectionName}</p>
                                     <p>{value.artistName}</p>
                                     <p>Episodes: {value.trackCount}</p>
                                 </span>
                             </Link>
                         </div>
-                       
                     )   
                         
                     })

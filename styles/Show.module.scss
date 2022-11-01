@@ -5,10 +5,14 @@
     margin: auto;
 }
 
-.showInfo {
+.showInfoInner {
 
+}
+
+.showInfo {
     img {
         width: 100%;
+        height: auto;
         border-radius: 6px;
     }
 }
@@ -28,6 +32,7 @@
 
     .showEpisodesContainer {
         width: 64%;
+        margin-left: 2.5%;
     }
 }
 

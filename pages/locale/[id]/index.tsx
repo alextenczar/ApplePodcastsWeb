@@ -47,9 +47,7 @@ const LocaleHome: NextPage<Props> = (props) => {
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
-                <div className={styles.thumb}>
-                    <Image src={imgUrl} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
-                </div>
+                <Image className={styles.thumb} src={imgUrl} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
             </Link>

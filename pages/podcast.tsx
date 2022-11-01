@@ -29,7 +29,7 @@ const podcast: NextPage<Props> = (returnData: any) => {
                 return (
                     <div key={value.collectionId}>
                         {value.collectionName}
-                        <Image src={value.artworkUrl00} alt={value.name} priority={priority} loading="eager" width={300} height={300} layout="responsive" placeholder="blur" blurDataURL={blurImgUrl}/>
+                        <Image src={value.artworkUrl00} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
                     </div>
 
                 );
