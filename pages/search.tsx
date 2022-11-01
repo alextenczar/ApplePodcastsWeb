@@ -31,13 +31,12 @@ const search: NextPage<Props> = (props) => {
                 {returnData.map((value: any, index: any) => {
                     let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
                     let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
-                    let priority = true
                     
                     return (
                         <div className={styles.showItem} key={value.collectionId}>
                             <Link href={{pathname: `/show`, query: {id: value.trackId} }}>
                                 <span>
-                                    <div className={searchStyles.thumb}><Image src={imgUrl} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/></div>
+                                    <div className={searchStyles.thumb}><Image src={imgUrl} alt={value.name} width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/></div>
                                     <p>{value.collectionName}</p>
                                     <p>{value.artistName}</p>
                                     <p>Episodes: {value.trackCount}</p>

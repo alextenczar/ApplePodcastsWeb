@@ -48,13 +48,12 @@ const show: NextPage<Props> = (props) => {
     let { returnShowData, returnEpisodesData, feedResult} = props;
     let episodes: any = returnEpisodesData
     let blurImgUrl = returnShowData.artworkUrl100.replace('100x100', '10x10')
-    let priority = true
 
     return (
         <Layout>
             <div className={styles.showPageContainer}>
                 <div className={styles.showInfo}>
-                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} priority width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
+                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
                     <div className={styles.showInfoInner}>
                         <h1>
                             <span>{returnShowData.collectionName}</span>

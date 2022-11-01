@@ -25,11 +25,10 @@ const podcast: NextPage<Props> = (returnData: any) => {
                     let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
                     let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
                     let showId = value.id
-                    let priority = true
                 return (
                     <div key={value.collectionId}>
                         {value.collectionName}
-                        <Image src={value.artworkUrl00} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
+                        <Image src={value.artworkUrl00} alt={value.name} width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
                     </div>
 
                 );

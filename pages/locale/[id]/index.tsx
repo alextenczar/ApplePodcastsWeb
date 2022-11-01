@@ -43,11 +43,10 @@ const LocaleHome: NextPage<Props> = (props) => {
         let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
         let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
         let showId = value.id
-        let priority = true
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
-                <Image className={styles.thumb} src={imgUrl} alt={value.name} priority width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
+                <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
             </Link>
