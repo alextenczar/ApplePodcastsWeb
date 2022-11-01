@@ -36,17 +36,22 @@ const LocaleHome: NextPage<Props> = (props) => {
   return (  
   <Layout>
     <div className={styles.headerSelect}>
-      <h2>Top Shows In:</h2>    <CountrySelect country={{countryCode}}></CountrySelect>
+      <h2>Top Shows In:</h2>    
+      <CountrySelect country={{countryCode}}></CountrySelect>
     </div>
     <div className={styles.showContainer}>
       {returnData.map((value: any, index: any) => {
         let imgUrl = value.artworkUrl100.replace('100x100', '300x300')
         let blurImgUrl = value.artworkUrl100.replace('100x100', '10x10')
         let showId = value.id
+        let imagePriority = false;
+        if(index <= 20) {
+          imagePriority = true;
+        }
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
-                <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} placeholder="blur" blurDataURL={blurImgUrl}/>
+                <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} priority={imagePriority} placeholder="blur" blurDataURL={blurImgUrl}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
             </Link>
