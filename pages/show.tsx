@@ -10,7 +10,9 @@ export async function getServerSideProps(context: any) {
     // Fetch data from external API
     var parseString = require('xml2js').parseString;
     const router = context
+
     async function showFeedData(show:any) {
+        console.log(show)
         const showFeedRes = await fetch(show.feedUrl)
         const showDataa = await showFeedRes.text()
 
@@ -30,6 +32,7 @@ export async function getServerSideProps(context: any) {
     const episodesData = await episodesRes.json()
     const returnShowData = episodesData.results[0]
     const feedResult = await showFeedData(episodesData.results[0])
+    console.log(feedResult)
     // Pass data to the page via props
     let returnEpisodesData = episodesData.results.slice(1)
 

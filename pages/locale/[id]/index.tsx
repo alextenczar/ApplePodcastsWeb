@@ -4,6 +4,7 @@ import Link from 'next/link'
 import Layout from '../../../components/layout'
 import CountrySelect from '../../../components/countrySelect'
 import Image from 'next/image'
+import { getPlaiceholder } from "plaiceholder";
 
 export async function getServerSideProps(context: any) {
   // Fetch data from external API
@@ -16,23 +17,46 @@ export async function getServerSideProps(context: any) {
     countryCode = id
   }
 
+  async function genPlaceholders(item:any) { 
+    const placeholders = await Promise.all(
+    item.map((index:any) => {
+        return getPlaiceholder(index.artworkUrl100.replace('100x100', '10x10'))
+    })
+    )
+
+    return placeholders
+  }
+  
 
   const res = await fetch(`https://rss.applemarketingtools.com/api/v2/${countryCode}/podcasts/top/50/podcasts.json`)
   const data = await res.json()
+  const placeholders = await genPlaceholders(data.feed.results)
+  
+  let returnPlaceholders:any = []
+  placeholders.map(index => {
+    returnPlaceholders.push(index.base64)
+  })
+  //console.log(test)
+
+
+
   // Pass data to the page via props
   let returnData: Array<object>
   returnData = data.feed.results
-  return { props: { returnData, countryCode }  }
+  return { props: { returnData, countryCode, returnPlaceholders }  }
 }
 
 interface Props {
   returnData: Array<object>;
   countryCode?: String;
+  returnPlaceholders: any;
 }
 
 const LocaleHome: NextPage<Props> = (props) => {
 
-  let { returnData, countryCode } = props
+  let { returnData, countryCode, returnPlaceholders} = props
+
+  console.log(returnPlaceholders)
   return (  
   <Layout>
     <div className={styles.headerSelect}>
@@ -48,10 +72,11 @@ const LocaleHome: NextPage<Props> = (props) => {
         if(index <= 20) {
           imagePriority = true;
         }
+
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
-                <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} priority={imagePriority} placeholder="blur" blurDataURL={blurImgUrl}/>
+                <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} priority={imagePriority} placeholder="blur" blurDataURL={returnPlaceholders[index]}/>
                 <p>{value.name}</p>
                 <p>{value.artistName}</p>
             </Link>

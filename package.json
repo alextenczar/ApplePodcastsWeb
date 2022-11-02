@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@plaiceholder/next": "^2.5.0",
     "next": "^13.0.1",
     "next-sitemap": "^3.1.25",
+    "plaiceholder": "^2.5.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-icons": "^4.6.0",
