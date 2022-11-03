@@ -1,7 +1,7 @@
 import type { NextPage } from 'next'
 import styles from '../styles/Home.module.scss'
 import Link from 'next/link'
-import Layout from '../components/layout'
+import Layout from './layout'
 import CountrySelect from '../components/countrySelect'
 import Image from 'next/image'
 

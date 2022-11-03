@@ -2,14 +2,13 @@ import type { NextPage } from 'next'
 import Image from 'next/image'
 import styles from '../styles/Show.module.scss'
 import Link from 'next/link'
-import Layout from '../components/layout'
+import Layout from './layout'
 import xml2js from 'xml2js'
 import { unescape } from 'querystring'
 
 export async function getServerSideProps(context: any) {
     // Fetch data from external API
     var parseString = require('xml2js').parseString;
-    const router = context
     async function showFeedData(show:any) {
         const showFeedRes = await fetch(show.feedUrl)
         const showDataa = await showFeedRes.text()
@@ -26,7 +25,7 @@ export async function getServerSideProps(context: any) {
     }
     
 
-    const episodesRes = await fetch(`https://itunes.apple.com/lookup?id=${router.query.id}&entity=podcastEpisode&limit=100`)
+    const episodesRes = await fetch(`https://itunes.apple.com/lookup?id=${context.query.id}&entity=podcastEpisode&limit=100`)
     const episodesData = await episodesRes.json()
     const returnShowData = episodesData.results[0]
     const feedResult = await showFeedData(episodesData.results[0])

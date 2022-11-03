@@ -1,8 +1,9 @@
 import Head from 'next/head'
 import styles from '../styles/Layout.module.scss'
 import Nav from '../components/Nav'
+import '../styles/globals.scss'
 
-
+'use client'
 
 export default function Layout({ children }: { children: JSX.Element|JSX.Element[]} ) {
     return (

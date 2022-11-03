@@ -1,8 +1,9 @@
 import React, { createRef, Suspense, useEffect, useState } from 'react';
-import { useRouter } from 'next/router'
+import { useRouter } from 'next/navigation'
 import { AiOutlineSearch, AiOutlineClose } from "react-icons/ai"
 import styles from '../styles/SearchBar.module.scss'
 
+'use client'
 
 export default function Nav(props: any) {
 

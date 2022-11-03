@@ -3,12 +3,11 @@ import Image from 'next/image'
 import styles from '../styles/Home.module.scss'
 import searchStyles from '../styles/Search.module.scss'
 import Link from 'next/link'
-import Layout from '../components/layout'
+import Layout from './layout'
 
 export async function getServerSideProps(context: any) {
     // Fetch data from external API
-    const router = context
-    const res = await fetch(`https://itunes.apple.com/search?term=${router.query.term}&entity=podcast`)
+    const res = await fetch(`https://itunes.apple.com/search?term=${context.query.term}&entity=podcast`)
     const data = await res.json()
     // Pass data to the page via props
     let returnData = data.results

@@ -1,6 +1,8 @@
-import React, { createRef, Suspense, useState } from 'react';
-import { useRouter } from 'next/router'
-import search from '../pages/search';
+'use client'
+
+import React, { createRef, Suspense } from 'react';
+import { useRouter } from 'next/navigation'
+import search from '../app/search';
 import styles from '../styles/Nav.module.scss'
 import Link from 'next/link'
 import { AiOutlineSearch } from "react-icons/ai"
