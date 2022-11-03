@@ -6,11 +6,13 @@ import CountrySelect from '../../../components/countrySelect'
 import Image from 'next/image'
 import { getPlaiceholder } from "plaiceholder";
 
-export async function getServerSideProps(context: any) {
+let countriesArr = ["dz","ao","ai","ag","ar","am","au","at","az","bs","bh","bb","by","be","bz","bj","bm","bt","bo","ba","bw","br","vg","bg","kh","cm","ca","cv","ky","td","cl","cn","co","cr","hr","cy","cz","ci","cd","dk","dm","do","ec","eg","sv","ee","sz","fj","fi","fr","ga","gm","ge","de","gh","gr","gd","gt","gw","gy","hn","hk","hu","is","in","id","iq","ie","il","it","jm","jp","jo","kz","ke","kr","xk","kw","kg","la","lv","lb","lr","ly","lt","lu","mo","mg","mw","my","mv","ml","mt","mr","mu","mx","fm","md","mn","me","ms","ma","mz","mm","na","np","nl","nz","ni","ne","ng","mk","no","om","pa","pg","py","pe","ph","pl","pt","qa","cg","ro","ru","rw","sa","sn","rs","sc","sl","sg","sk","si","sb","za","es","lk","kn","lc","vc","sr","se","ch","tw","tj","tz","th","to","tt","tn","tr","tm","tc","ae","ug","ua","gb","us","uy","uz","vu","ve","vn","ye","zm","zw"]
+
+export async function getStaticProps(context:any) {
   // Fetch data from external API
-  const router = context
-  const id = router.query.id as string
-  let countriesArr = ["dz","ao","ai","ag","ar","am","au","at","az","bs","bh","bb","by","be","bz","bj","bm","bt","bo","ba","bw","br","vg","bg","kh","cm","ca","cv","ky","td","cl","cn","co","cr","hr","cy","cz","ci","cd","dk","dm","do","ec","eg","sv","ee","sz","fj","fi","fr","ga","gm","ge","de","gh","gr","gd","gt","gw","gy","hn","hk","hu","is","in","id","iq","ie","il","it","jm","jp","jo","kz","ke","kr","xk","kw","kg","la","lv","lb","lr","ly","lt","lu","mo","mg","mw","my","mv","ml","mt","mr","mu","mx","fm","md","mn","me","ms","ma","mz","mm","na","np","nl","nz","ni","ne","ng","mk","no","om","pa","pg","py","pe","ph","pl","pt","qa","cg","ro","ru","rw","sa","sn","rs","sc","sl","sg","sk","si","sb","za","es","lk","kn","lc","vc","sr","se","ch","tw","tj","tz","th","to","tt","tn","tr","tm","tc","ae","ug","ua","gb","us","uy","uz","vu","ve","vn","ye","zm","zw"]
+  const id = context.params.id as string
+  console.log(id)
+  
   let countryCode = 'us'
 
   if (id !== undefined && countriesArr.includes(id)) {
@@ -46,6 +48,22 @@ export async function getServerSideProps(context: any) {
   return { props: { returnData, countryCode, returnPlaceholders }  }
 }
 
+// This function gets called at build time on server-side.
+// It may be called again, on a serverless function, if
+// the path has not been generated.
+export async function getStaticPaths() {
+
+  // Get the paths we want to pre-render based on posts
+  const paths = countriesArr.map((code) => ({
+    params: { id: code },
+  }))
+
+  // We'll pre-render only these paths at build time.
+  // { fallback: blocking } will server-render pages
+  // on-demand if the path doesn't exist.
+  return { paths, fallback: 'blocking' }
+}
+
 interface Props {
   returnData: Array<object>;
   countryCode?: String;
@@ -56,7 +74,7 @@ const LocaleHome: NextPage<Props> = (props) => {
 
   let { returnData, countryCode, returnPlaceholders} = props
 
-  console.log(returnPlaceholders)
+  //console.log(returnPlaceholders)
   return (  
   <Layout>
     <div className={styles.headerSelect}>
