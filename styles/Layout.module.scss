@@ -107,3 +107,9 @@
   height: 1em;
   margin-left: 0.5rem;
 }
+
+@media (max-width: 1024px) {
+  .container {
+    padding: 0;
+  }
+}

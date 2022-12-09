@@ -6,6 +6,7 @@ $applePurple: #7d50df;
     padding: .66em;
     display: flex;
     position: relative;
+    transition: background .5s;
     cursor: pointer;
     select {
         // A reset of styles, including removing the default dropdown arrow
@@ -46,5 +47,8 @@ $applePurple: #7d50df;
             width: 2em;
             height: 2em;
         }
+    }
+    &:hover {
+        background: #e7e7ec;
     }
 }
