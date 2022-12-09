@@ -3,7 +3,7 @@ User-agent: *
 Allow: /
 
 # Host
-Host: https://example.com
+Host: https://podcasts.alextenczar.com
 
 # Sitemaps
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://podcasts.alextenczar.com/sitemap.xml
