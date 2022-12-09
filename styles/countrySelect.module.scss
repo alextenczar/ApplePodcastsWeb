@@ -1,0 +1,50 @@
+$applePurple: #7d50df;
+
+.countrySelector {
+    background: #efeff4;
+    border-radius: 13px;
+    padding: .66em;
+    display: flex;
+    position: relative;
+    cursor: pointer;
+    select {
+        // A reset of styles, including removing the default dropdown arrow
+        appearance: none;
+        // Additional resets for further consistency
+        background-color: transparent;
+        border: none;
+        padding: 0 1em 0 0;
+        margin: 0;
+        width: 100%;
+        font-family: inherit;
+        font-size: inherit;
+        cursor: inherit;
+        line-height: inherit;
+        width: 100%;
+        position: relative;
+        font-size: 1.025em;
+        color: var(--apple-purple)
+    }
+    .arrowDown {
+        pointer-events: none;
+        float: right;
+        display: inline-block;
+        padding: .33em;
+        color: var(--apple-purple);
+        position: absolute;
+        right: .33em;
+        top: 50%;
+        transform: translateY(-50%);
+        vertical-align: center;
+        width: 2em;
+        height: 2em;
+        svg {
+            left: -7%;
+            top: -1%;
+            font-size: .75em;
+            position: relative;
+            width: 2em;
+            height: 2em;
+        }
+    }
+}

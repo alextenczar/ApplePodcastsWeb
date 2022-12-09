@@ -1,11 +1,16 @@
 html,
 body {
+  background: #fafafa;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   margin: 0;
   font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+:root {
+  --apple-purple: #7d50df;
 }
 
 a {

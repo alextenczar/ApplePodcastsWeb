@@ -1,5 +1,7 @@
 import React, {createRef} from 'react'
 import { useRouter } from 'next/router'
+import styles from '../styles/countrySelect.module.scss'
+import { AiOutlineDown } from "react-icons/ai"
 
 export default function CountrySelect(props: any) {
     const router = useRouter()
@@ -8,7 +10,7 @@ export default function CountrySelect(props: any) {
         router.push(countryValue);
     }
     return (
-        <label>
+        <div className={styles.countrySelector}>
             <select id="storefronts" onChange={handleChange} value={props.country.countryCode}>
                 <option value="dz">Algeria</option>
                 <option value="ao">Angola</option>
@@ -178,6 +180,9 @@ export default function CountrySelect(props: any) {
                 <option value="zm">Zambia</option>
                 <option value="zw">Zimbabwe</option>
             </select>
-        </label>
+            <div className={styles.arrowDown}>
+                <AiOutlineDown />
+            </div>
+        </div>
     );
 }

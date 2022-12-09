@@ -3,7 +3,6 @@ import { useRouter } from 'next/router'
 import search from '../pages/search';
 import styles from '../styles/Nav.module.scss'
 import Link from 'next/link'
-import { AiOutlineSearch } from "react-icons/ai"
 import SearchBar from '../components/SearchBar'
 
 

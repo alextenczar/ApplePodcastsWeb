@@ -36,7 +36,7 @@ const LocaleHome: NextPage<Props> = (props) => {
   return (  
   <Layout>
     <div className={styles.headerSelect}>
-      <h2>Top Shows In:</h2>    
+      <h2><label>Top Shows In:</label></h2>    
       <CountrySelect country={{countryCode}}></CountrySelect>
     </div>
     <div className={styles.showContainer}>
@@ -51,9 +51,13 @@ const LocaleHome: NextPage<Props> = (props) => {
         return (
           <div className={styles.showItem} key={value.id}>
             <Link href={{ pathname: `/show`, query: { id: showId } }}>
+            <div className={styles.thumbContainer}>
+              <div className={styles.thumb}>
                 <Image className={styles.thumb} src={imgUrl} alt={value.name} width={300} height={300} priority={imagePriority} placeholder="blur" blurDataURL={blurImgUrl}/>
-                <p>{value.name}</p>
-                <p>{value.artistName}</p>
+              </div>
+            </div>    
+                <p className={styles.podcastName}>{value.name}</p>
+                <p className={styles.podcastAuthor}>{value.artistName}</p>
             </Link>
           </div>
         );
