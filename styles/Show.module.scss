@@ -1,15 +1,20 @@
 .showPageContainer {
     display: flex;
     flex-direction: column;
-    max-width: 87%;
+    max-width: 1024px;
+    padding-left: 22px;
+    padding-right: 22px;
     margin: auto;
 }
 
 .showInfoInner {
-
+    span {
+        display: block;
+    }
 }
 
 .showInfo {
+    display: flex;
     img {
         width: 100%;
         height: auto;
@@ -17,28 +22,97 @@
     }
 }
 
+.showImg {
+    border: .5px solid rgba(0,0,0,.1);
+}
+
+.numEpisodes {
+    color: var(--apple-grey);
+    border-bottom: 1px solid var(--apple-light-grey);
+    padding-bottom: .5rem;
+}
+
+.showCaptionContainer {
+    font-size: .85rem;
+    line-height: 1.25;
+}
+
 .showEpisodesContainer {
 
+}
+
+.showHeader {
+    span {
+        display: block;
+    }
+}
+
+.smallHide {
+    display: none;
+    .numEpisodes {
+        padding-bottom: .85rem;
+    }
+}
+
+.showImgInner {
+    display: flex;
+    .showImg {
+        width: 40%;
+    }
+    .showHeader {
+        margin-left: 3%;
+        width: 60%;
+    }
+}
+
+.largeHide {
+    .showHeader h1 {
+        font-size: 1.25rem;
+    }
+    .showTitle {
+        font-weight: 600;
+    }
+    .showAuthor {
+        font-weight: 400;
+    }
+    .showGenre {
+        color: var(--apple-grey)
+    }
+    .numEpisodes {
+        margin-top: 0;
+        text-align: right;
+    }
 }
 
 @media only screen and (min-width: 735px) {
     .showPageContainer {
         flex-direction: row;
-        max-width: 692px;
+        max-width: 980px;
+        padding-left: 22px;
+        padding-right: 22px;
     }
     .showInfo {
         width: 36%;
     }
 
+    .smallHide {
+        display: block;
+    }
+
+    .largeHide {
+        display: none;
+    }
+
     .showEpisodesContainer {
         width: 64%;
-        margin-left: 2.5%;
+        margin-left: 5%;
     }
 }
 
 @media only screen and (min-width: 1069px) {
     .showPageContainer {
-        max-width: 980px;
+        width: 85%;
+        max-width: 1280px;
     }
 
 }

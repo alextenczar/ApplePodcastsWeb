@@ -1,16 +1,19 @@
+
+:root {
+  --apple-purple: #7d50df;
+  --apple-grey: #636366;
+  --apple-black: #1d1d1f;
+  --apple-light-grey: #d6d6d6;
+}
+
 html,
 body {
   background: #fafafa;
+  color: var(--apple-black);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   padding: 0;
   margin: 0;
-  font-family: 'Roboto', -apple-system, BlinkMacSystemFont, Segoe UI, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
-
-:root {
-  --apple-purple: #7d50df;
 }
 
 a {

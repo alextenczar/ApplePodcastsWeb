@@ -26,7 +26,7 @@ export async function getServerSideProps(context: any) {
     }
     
 
-    const episodesRes = await fetch(`https://itunes.apple.com/lookup?id=${router.query.id}&entity=podcastEpisode&limit=100`)
+    const episodesRes = await fetch(`https://itunes.apple.com/lookup?id=${router.query.id}&entity=podcastEpisode&limit=10`)
     const episodesData = await episodesRes.json()
     const returnShowData = episodesData.results[0]
     const feedResult = await showFeedData(episodesData.results[0])
@@ -52,18 +52,45 @@ const show: NextPage<Props> = (props) => {
     return (
         <Layout>
             <div className={styles.showPageContainer}>
-                <div className={styles.showInfo}>
-                    <Image src={returnShowData.artworkUrl600} alt={returnShowData.name} width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
-                    <div className={styles.showInfoInner}>
-                        <h1>
-                            <span>{returnShowData.collectionName}</span>
-                            <span>{returnShowData.artistName}</span>
-                        </h1>
-                        <p>{returnShowData.trackCount} Episodes</p>
-                        <p>{feedResult.replace(/<\/?[^>]+>/gi, '')}</p>
+                <div className={`${styles.smallHide} ${styles.showInfo}`}>
+                    <div className={styles.showImgContainer}>
+                        <Image  className={styles.showImg} src={returnShowData.artworkUrl600} alt={returnShowData.name} width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
+                        <div className={styles.showInfoInner}>
+                            <div className={styles.showCaptionContainer}>
+                                <p className={styles.numEpisodes}>{returnShowData.trackCount} Episodes</p>
+                                <p>{feedResult.replace(/<\/?[^>]+>/gi, '')}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div className={`${styles.largeHide} ${styles.showInfo}`}>
+                    <div className={styles.showImgContainer}>
+                        <div className={styles.showImgInner}>
+                            <Image  className={styles.showImg} src={returnShowData.artworkUrl600} alt={returnShowData.name} width={600} height={600} placeholder="blur" blurDataURL={blurImgUrl}/>
+                            <header className={styles.showHeader}>
+                                <h1>
+                                    <span className={styles.showTitle}>{returnShowData.collectionName}</span>
+                                    <span className={styles.showAuthor}>{returnShowData.artistName}</span>
+                                </h1>
+                                <p className={styles.showGenre}>{returnShowData.primaryGenreName}</p>
+                            </header>
+                        </div>
+                       <div className={styles.showInfoInner}>
+                            <div className={styles.showCaptionContainer}>
+                                <p className={styles.numEpisodes}>{returnShowData.trackCount} Episodes</p>
+                                <p>{feedResult.replace(/<\/?[^>]+>/gi, '')}</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div className={styles.showEpisodesContainer}>
+                    <div className={styles.smallHide}>
+                        <h1 className={` ${styles.smallHide} ${styles.showHeader}`}>
+                            <span className={styles.showTitle}>{returnShowData.collectionName}</span>
+                            <span className={styles.showAuthor}>{returnShowData.artistName}</span>
+                        </h1>
+                    </div>
+
                     {episodes.map((value: any, index: any) => {
                         const releaseDate = new Date(value.releaseDate).toLocaleDateString('en-us', { month:"short", day:"numeric", year:"numeric"})
                         let podcastHourLength = value.trackTimeMillis / 3600000
@@ -87,9 +114,7 @@ const show: NextPage<Props> = (props) => {
                                 </audio>
                                 <p>{podcastLengthString}</p>
                             </div> 
-                    )
-                            
-                        })
+                    )})
                     }
                 </div>
             </div>

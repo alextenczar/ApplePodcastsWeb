@@ -4,7 +4,8 @@
   position: absolute;
   top: 0;
   left: 0;
-  img {
+
+  img.thumb {
     position: relative;
     height: auto;
     width: 100%;
@@ -17,6 +18,7 @@
     box-shadow: 2px 4px 16px rgba(0,0,0,.16);
     transform: scale(1.025,1.025);
   }
+  outline: .5px solid rgba(0,0,0,.1);
   overflow: hidden;
   border-radius: 6px;
   display: block;
